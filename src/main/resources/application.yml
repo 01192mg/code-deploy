@@ -1,0 +1,145 @@
+spring:
+  profiles:
+    active: local
+
+    group:
+      "local": "localdb,locals3,localjwt,localetc,common"
+      "prod": "proddb,prods3,prodjwt,common,prodetc"
+
+  config:
+    import: secrets.yml
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: "localdb"
+  datasource:
+    url: ${DATASOURCE_URL}
+    username: ${DATASOURCE_USERNAME}
+    password: ${DATASOURCE_PASSWORD}
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: "proddb"
+  datasource:
+    url: ${{ secrets.AWS_RDS_URL }}
+    username: ${{ secrets.AWS_RDS_USERNAME }}
+    password: ${{ secrets.AWS_RDS_PASSWORD }}
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: "locals3"
+
+cloud:
+  aws:
+    credentials:
+      access-key: ${AWS_ACCESS_KEY}
+      secret-key: ${AWS_SECRET_KEY}
+    s3:
+      bucket: ${AWS_BUCKET}
+    region:
+      static: ${AWS_REGION}
+    stack:
+      auto: false
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: "prods3"
+
+cloud:
+  aws:
+    credentials:
+      access-key: ${{ secrets.AWS_ACCESS_KEY }}
+      secret-key: ${{ secrets.AWS_SECRET_KEY }}
+    s3:
+      bucket: ${{ secrets.AWS_BUCKET }}
+    region:
+      static: ${{ secrets.AWS_REGION }}
+    stack:
+      auto: false
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: "localjwt"
+
+jwt:
+  secret: ${JWT_SECRET_KEY}
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: "prodjwt"
+
+jwt:
+  secret: ${{ secrets.JWT_SECRET_KEY }}
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: "common"
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+server:
+  servlet:
+    encoding:
+      charset: utf-8
+      force: true
+
+logging:
+  level:
+    org:
+      apache:
+        coyote:
+          http11: debug
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: "localetc"
+
+#  jpa:
+#    properties:
+#      hibernate:
+#        show_sql: true # DDL, DML 쿼리 모두 출력
+#        format_sql: true # 쿼리를 알기 쉽게 보여줌
+
+  h2:
+    console:
+      enabled: true
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: "prodetc"
+
+decorator:
+  datasource:
+    p6spy:
+      enable-logging: false
