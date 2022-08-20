@@ -33,29 +33,18 @@ jobs:
       with:
         files: ${{ env.RESOURCE_PATH }}
       env:
-#        spring.profiles.active: ${{ secrets.PROFILE }}
-#        spring.config.import:
-#        cloud.aws.credentials.access-key: ${{ secrets.AWS_ACCESS_KEY }}
-#        cloud.aws.credentials.secret-key: ${{ secrets.AWS_SECRET_KEY }}
-#        cloud.aws.s3.bucket: ${{ secrets.AWS_BUCKET }}
-#        cloud.aws.s3.region: ${{ secrets.AWS_REGION }}
-#
-#        spring.datasource.url: ${{ secrets.AWS_RDS_URL }}
-#        spring.datasource.username: ${{ secrets.AWS_RDS_USERNAME }}
-#        spring.datasource.password: ${{ secrets.AWS_RDS_PASSWORD }}
-#
-#        jwt.secret: ${{ secrets.JWT_SECRET_KEY }}
-        ACTIVE_PROFILE: prod
-        AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
-        AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
-        AWS_BUCKET: ${{ secrets.AWS_BUCKET }}
-        AWS_REGION: ${{ secrets.AWS_REGION }}
+        spring.profiles.active: ${{ secrets.PROFILE }}
+        spring.config.import:
+        cloud.aws.credentials.access-key: ${{ secrets.AWS_ACCESS_KEY }}
+        cloud.aws.credentials.secret-key: ${{ secrets.AWS_SECRET_KEY }}
+        cloud.aws.s3.bucket: ${{ secrets.AWS_BUCKET }}
+        cloud.aws.s3.region: ${{ secrets.AWS_REGION }}
 
-        DATASOURCE_URL: ${{ secrets.AWS_RDS_URL }}
-        DATASOURCE_USERNAME: ${{ secrets.AWS_RDS_USERNAME }}
-        DATASOURCE_PASSWORD: ${{ secrets.AWS_RDS_PASSWORD }}
+        spring.datasource.url: ${{ secrets.AWS_RDS_URL }}
+        spring.datasource.username: ${{ secrets.AWS_RDS_USERNAME }}
+        spring.datasource.password: ${{ secrets.AWS_RDS_PASSWORD }}
 
-        JWT_SECRET_KEY: ${{ secrets.JWT_SECRET_KEY }}
+        jwt.secret: ${{ secrets.JWT_SECRET_KEY }}
         
     - name: Grant execute permission for gradlew
       run: chmod +x ./gradlew
