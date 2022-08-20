@@ -1,5 +1,4 @@
-abc: aa
-
+spring.config.use-legacy-processing: true
 spring:
   profiles:
     active: prod
