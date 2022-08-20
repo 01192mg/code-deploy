@@ -1,17 +1,17 @@
-#server:
-#  port: 8080
-#
-#spring:
-#  profiles:
-#    active: prod
-#    group:
-#      "local": "common, local"
-#      "prod": "common, prod"
-#  config:
-#    import: secrets.yml
-#
-#---
-#
+server:
+  port: 8080
+
+spring:
+  profiles:
+    active: prod
+    group:
+      "local": "common, local"
+      "prod": "common, prod"
+  config:
+    import: secrets.yml
+
+---
+
 #spring:
 #  config:
 #    activate:
