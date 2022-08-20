@@ -1,3 +1,4 @@
+aaaa:
 spring:
   profiles:
     active: ${ACTIVE_PROFILE}
