@@ -50,14 +50,15 @@ jobs:
       run: chmod +x ./gradlew build -x test
       shell: bash
 
-    - name: Build with Gradle
-      run: ./gradlew build -x test
-      shell: bash
-
 #    - name: Build with Gradle
-#      uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
-#      with:
-#        arguments: build
+#      run: ./gradlew build -x test
+#      shell: bash
+
+    - name: Build with Gradle
+      uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
+      run: ./gradlew build -x test
+      with:
+        arguments: build
         
     - name: Make zip file
       run: zip -r ./$GITHUB_SHA.zip .
