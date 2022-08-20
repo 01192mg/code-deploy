@@ -1,14 +1,13 @@
-spring.config.use-legacy-processing: true
-spring:
-  profiles:
-    active: prod
+#spring:
+#  profiles:
+#    active: prod
 #    group:
 #      "local": "common, local"
 #      "prod": "common, prod"
 #  config:
 #    import: secrets.yml
-
----
+#
+#---
 
 #spring:
 #  config:
