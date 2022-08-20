@@ -44,6 +44,9 @@ jobs:
         spring.datasource.password: ${{ secrets.AWS_RDS_PASSWORD }}
 
         jwt.secret: ${{ secrets.JWT_SECRET_KEY }}
+    - name: Build with Gradle
+      run: ./gradlew build -x test
+      shell: bash
         
     - name: Grant execute permission for gradlew
       run: chmod +x ./gradlew
