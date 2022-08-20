@@ -1,11 +1,11 @@
-#spring:
-#  profiles:
-#    active: ${ACTIVE_PROFILE}
-#    group:
-#      "local": "common, local"
-#      "prod": "common, prod"
-#  config:
-#    import: secrets.yml
+spring:
+  profiles:
+    active: ${ACTIVE_PROFILE}
+    group:
+      "local": "common, local"
+      "prod": "common, prod"
+  config:
+    import: secrets.yml
 
 ---
 
@@ -17,13 +17,13 @@ spring:
     url: ${DATASOURCE_URL}
     username: ${DATASOURCE_USERNAME}
     password: ${DATASOURCE_PASSWORD}
-
-  jackson:
-    serialization:
-      fail-on-empty-beans: false
-  jpa:
-    hibernate:
-      ddl-auto: update
+#
+#  jackson:
+#    serialization:
+#      fail-on-empty-beans: false
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
 
 cloud:
   aws:
@@ -39,19 +39,19 @@ cloud:
 
 jwt:
   secret: ${JWT_SECRET_KEY}
-
-server:
-  servlet:
-    encoding:
-      charset: utf-8
-      force: true
-
-logging:
-  level:
-    org:
-      apache:
-        coyote:
-          http11: debug
+#
+#server:
+#  servlet:
+#    encoding:
+#      charset: utf-8
+#      force: true
+#
+#logging:
+#  level:
+#    org:
+#      apache:
+#        coyote:
+#          http11: debug
 
 ---
 
@@ -67,11 +67,11 @@ spring:
   h2:
     console:
       enabled: true
-
-decorator:
-  datasource:
-    p6spy:
-      enable-logging: true # default: true
+#
+#decorator:
+#  datasource:
+#    p6spy:
+#      enable-logging: true # default: true
 
 ---
 
