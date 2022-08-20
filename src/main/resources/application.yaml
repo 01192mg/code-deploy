@@ -1,14 +1,13 @@
-server:
-  port: 8080
+abc: aa
 
 spring:
   profiles:
     active: prod
-    group:
-      "local": "common, local"
-      "prod": "common, prod"
-  config:
-    import: secrets.yml
+#    group:
+#      "local": "common, local"
+#      "prod": "common, prod"
+#  config:
+#    import: secrets.yml
 
 ---
 
