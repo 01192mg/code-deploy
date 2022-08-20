@@ -1,9 +1,9 @@
-spring:
-  profiles:
-    active: ${ACTIVE_PROFILE}
-    group:
-      "local": "common, local"
-      "prod": "common, prod"
+#spring:
+#  profiles:
+#    active: ${ACTIVE_PROFILE}
+#    group:
+#      "local": "common, local"
+#      "prod": "common, prod"
 #  config:
 #    import: secrets.yml
 
