@@ -33,7 +33,6 @@ jobs:
       with:
         files: ${{ env.RESOURCE_PATH }}
       env:
-        spring.profiles.active: ${{ secrets.PROFILE }}
         cloud.aws.credentials.access-key: ${{ secrets.AWS_ACCESS_KEY }}
         cloud.aws.credentials.secret-key: ${{ secrets.AWS_SECRET_KEY }}
         cloud.aws.s3.bucket: ${{ secrets.AWS_BUCKET }}
@@ -42,7 +41,6 @@ jobs:
         spring.datasource.url: ${{ secrets.AWS_RDS_URL }}
         spring.datasource.username: ${{ secrets.AWS_RDS_USERNAME }}
         spring.datasource.password: ${{ secrets.AWS_RDS_PASSWORD }}
-        spring.config.import:
 
         jwt.secret: ${{ secrets.JWT_SECRET_KEY }}
 
