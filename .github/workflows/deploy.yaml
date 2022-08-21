@@ -10,6 +10,7 @@ permissions:
   contents: read
 
 env:
+  PROFILE: prod
   PROJECT_NAME: code-deploy
   S3_BUCKET_NAME: week05
   RESOURCE_PATH: ./src/main/resources/application.yaml
@@ -33,10 +34,11 @@ jobs:
       with:
         files: ${{ env.RESOURCE_PATH }}
       env:
+        spring.profile.active: ${{ env.PROFILE }}
         cloud.aws.credentials.access-key: ${{ secrets.AWS_ACCESS_KEY }}
         cloud.aws.credentials.secret-key: ${{ secrets.AWS_SECRET_KEY }}
         cloud.aws.s3.bucket: ${{ secrets.AWS_BUCKET }}
-        cloud.aws.s3.region: ${{ secrets.AWS_REGION }}
+        cloud.aws.s3.region.static: ${{ secrets.AWS_REGION }}
 
         spring.datasource.url: ${{ secrets.AWS_RDS_URL }}
         spring.datasource.username: ${{ secrets.AWS_RDS_USERNAME }}
