@@ -42,6 +42,7 @@ jobs:
         spring.datasource.url: ${{ secrets.AWS_RDS_URL }}
         spring.datasource.username: ${{ secrets.AWS_RDS_USERNAME }}
         spring.datasource.password: ${{ secrets.AWS_RDS_PASSWORD }}
+        spring.config.import:
 
         jwt.secret: ${{ secrets.JWT_SECRET_KEY }}
 

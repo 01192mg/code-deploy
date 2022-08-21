@@ -1,189 +1,30 @@
-#spring:
-#  profiles:
-#    active: prod
-#    group:
-#      "local": "common, local"
-#      "prod": "common, prod"
-#  config:
-#    import: secrets.yml
-#
-#---
+spring:
+  profiles:
+    active:
+    - local
+    group:
+      "local": "common, local"
+      "prod": "common, prod"
+  config:
+    import: secrets.yml
 
-#spring:
-#  config:
-#    activate:
-#      on-profile: "common"
-#  datasource:
-#    url: ${DATASOURCE_URL}
-#    username: ${DATASOURCE_USERNAME}
-#    password: ${DATASOURCE_PASSWORD}
-#
-#  jackson:
-#    serialization:
-#      fail-on-empty-beans: false
-#  jpa:
-#    hibernate:
-#      ddl-auto: update
-#
-#cloud:
-#  aws:
-#    credentials:
-#      access-key: ${AWS_ACCESS_KEY}
-#      secret-key: ${AWS_SECRET_KEY}
-#    s3:
-#      bucket: ${AWS_BUCKET}
-#    region:
-#      static: ${AWS_REGION}
-#    stack:
-#      auto: false
-#
-#jwt:
-#  secret: ${JWT_SECRET_KEY}
-#
-#server:
-#  servlet:
-#    encoding:
-#      charset: utf-8
-#      force: true
-#
-#logging:
-#  level:
-#    org:
-#      apache:
-#        coyote:
-#          http11: debug
-#
-#---
-#
-#spring:
-#  config:
-#    activate:
-#      on-profile: "local"
-#  jpa:
-#    properties:
-#      hibernate:
-#        show_sql: true # DDL, DML 쿼리 모두 출력
-#        format_sql: true # 쿼리를 알기 쉽게 보여줌
-#  h2:
-#    console:
-#      enabled: true
-#
-#decorator:
-#  datasource:
-#    p6spy:
-#      enable-logging: true # default: true
-#
-#---
-#
-#spring:
-#  config:
-#    activate:
-#      on-profile: "prod"
-#decorator:
-#  datasource:
-#    p6spy:
-#      enable-logging: false
-#
-#
-#server:
-#  port: 8080
-#
-#spring:
-#  profiles:
-#    active: prod
-#    group:
-#      "local": "common, local"
-#      "prod": "common, prod"
-#  config:
-#    import: secrets.yml
-#
-#---
-#
-#spring:
-#  config:
-#    activate:
-#      on-profile: "common"
-#  datasource:
-#    url: ${DATASOURCE_URL}
-#    username: ${DATASOURCE_USERNAME}
-#    password: ${DATASOURCE_PASSWORD}
-#
-#  jackson:
-#    serialization:
-#      fail-on-empty-beans: false
-#  jpa:
-#    hibernate:
-#      ddl-auto: update
-#
-#cloud:
-#  aws:
-#    credentials:
-#      access-key: ${AWS_ACCESS_KEY}
-#      secret-key: ${AWS_SECRET_KEY}
-#    s3:
-#      bucket: ${AWS_BUCKET}
-#    region:
-#      static: ${AWS_REGION}
-#    stack:
-#      auto: false
-#
-#jwt:
-#  secret: ${JWT_SECRET_KEY}
-#
-#server:
-#  servlet:
-#    encoding:
-#      charset: utf-8
-#      force: true
-#
-#logging:
-#  level:
-#    org:
-#      apache:
-#        coyote:
-#          http11: debug
-#
-#---
-#
-#spring:
-#  config:
-#    activate:
-#      on-profile: "local"
-#  jpa:
-#    properties:
-#      hibernate:
-#        show_sql: true # DDL, DML 쿼리 모두 출력
-#        format_sql: true # 쿼리를 알기 쉽게 보여줌
-#  h2:
-#    console:
-#      enabled: true
-#
-#decorator:
-#  datasource:
-#    p6spy:
-#      enable-logging: true # default: true
-#
-#---
-#
-#spring:
-#  config:
-#    activate:
-#      on-profile: "prod"
-#decorator:
-#  datasource:
-#    p6spy:
-#      enable-logging: false
-
+---
 
 spring:
   config:
-#    activate:
-#      on-profile: "common"
-    import: secrets.yml
+    activate:
+      on-profile: "common"
   datasource:
     url: ${DATASOURCE_URL}
     username: ${DATASOURCE_USERNAME}
     password: ${DATASOURCE_PASSWORD}
+
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+  jpa:
+    hibernate:
+      ddl-auto: update
 
 cloud:
   aws:
@@ -199,3 +40,84 @@ cloud:
 
 jwt:
   secret: ${JWT_SECRET_KEY}
+
+server:
+  servlet:
+    encoding:
+      charset: utf-8
+      force: true
+
+logging:
+  level:
+    org:
+      apache:
+        coyote:
+          http11: debug
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: "local"
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true # DDL, DML 쿼리 모두 출력
+        format_sql: true # 쿼리를 알기 쉽게 보여줌
+  h2:
+    console:
+      enabled: true
+
+decorator:
+  datasource:
+    p6spy:
+      enable-logging: true # default: true
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: "prod"
+decorator:
+  datasource:
+    p6spy:
+      enable-logging: false
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: "prod"
+decorator:
+  datasource:
+    p6spy:
+      enable-logging: false
+
+
+#spring:
+#  config:
+##    activate:
+##      on-profile: "common"
+#    import: secrets.yml
+#  datasource:
+#    url: ${DATASOURCE_URL}
+#    username: ${DATASOURCE_USERNAME}
+#    password: ${DATASOURCE_PASSWORD}
+#
+#cloud:
+#  aws:
+#    credentials:
+#      access-key: ${AWS_ACCESS_KEY}
+#      secret-key: ${AWS_SECRET_KEY}
+#    s3:
+#      bucket: ${AWS_BUCKET}
+#    region:
+#      static: ${AWS_REGION}
+#    stack:
+#      auto: false
+#
+#jwt:
+#  secret: ${JWT_SECRET_KEY}
