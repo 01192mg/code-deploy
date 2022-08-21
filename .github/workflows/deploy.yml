@@ -12,7 +12,7 @@ permissions:
 env:
   PROJECT_NAME: code-deploy
   S3_BUCKET_NAME: week05
-  RESOURCE_PATH: ./src/main/resources/application.yaml
+  RESOURCE_PATH: ./src/main/resources/application.yml
   CODE_DEPLOY_APPLICATION_NAME: mingyu-code-deploy
   CODE_DEPLOY_DEPLOYMENT_GROUP_NAME: mingyu-server
 
