@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static com.example.codedeploy.jwt.JwtProperties.CLAIM_USERNAME;
+
 public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 
     private final JwtService jwtService;
@@ -31,7 +33,7 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
         try {
             // token 검증
             String token = jwtService.resolveToken(request);
-            String username = jwtService.getClaim("username", token);
+            String username = jwtService.getClaim(CLAIM_USERNAME, token);
 
             // Authentication 생성
             Member member = memberRepository.findByUsername(username).orElseThrow();

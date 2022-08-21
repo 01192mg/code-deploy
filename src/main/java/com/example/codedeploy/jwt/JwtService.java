@@ -13,7 +13,7 @@ import java.util.Date;
 import static com.example.codedeploy.jwt.JwtProperties.*;
 
 @Component
-public final class JwtService {
+public class JwtService {
 
     @Value("${jwt.secret}")
     public String SECRET_KEY;
@@ -23,14 +23,14 @@ public final class JwtService {
         return JWT.create()
                 .withSubject(ACCESS_TOKEN_SUBJECT)
                 .withExpiresAt(new Date(now + ACCESS_TOKEN_EXPIRE_TIME))
-                .withClaim("username", memberDetails.getUser().getUsername())
+                .withClaim(CLAIM_USERNAME, memberDetails.getUser().getUsername())
                 .sign(Algorithm.HMAC512(SECRET_KEY));
     }
 
     public String resolveToken(HttpServletRequest request) {
-        String bearerToken = request.getHeader(JwtProperties.AUTHORIZATION_HEADER);
-        if (StringUtils.hasText(bearerToken) && bearerToken.startsWith(JwtProperties.TOKEN_PREFIX)) {
-            return bearerToken.substring(7);
+        String bearerToken = request.getHeader(AUTHORIZATION_HEADER);
+        if (StringUtils.hasText(bearerToken) && bearerToken.startsWith(TOKEN_PREFIX)) {
+            return bearerToken.substring(TOKEN_PREFIX.length());
         }
         return null;
     }

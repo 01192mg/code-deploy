@@ -2,6 +2,8 @@ package com.example.codedeploy.config;
 
 import com.example.codedeploy.jwt.*;
 import com.example.codedeploy.repository.MemberRepository;
+import com.example.codedeploy.security.AccessDeniedHandlerException;
+import com.example.codedeploy.security.AuthenticationEntryPointException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Bean;

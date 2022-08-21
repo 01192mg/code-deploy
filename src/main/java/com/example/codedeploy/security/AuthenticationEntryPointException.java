@@ -1,4 +1,4 @@
-package com.example.codedeploy.jwt;
+package com.example.codedeploy.security;
 
 import com.example.codedeploy.dto.response.ResponseDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
